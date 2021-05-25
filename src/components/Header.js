@@ -9,6 +9,7 @@ function Header(props) {
   }
 
   function click(e) {
+    e.preventDefault()
     const item = new Item(props.text)
     props.updateStateList(item)
   }
@@ -17,8 +18,10 @@ function Header(props) {
     <div className="">
       <header className>
         <h1>Todo List React</h1>
-        <input type="text" onChange={handleChange} value={props.text}/>
-        <button onClick={click}>Adicionar</button>
+        <form action="">
+          <input type="text" onChange={handleChange} value={props.text}/>
+          <button onClick={click}>Adicionar</button>
+        </form>
       </header>
     </div>
   )

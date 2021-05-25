@@ -23,7 +23,11 @@ function App() {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('item', JSON.stringify(list))
+    const doneEdit = list.map(({edit,...it }) => {
+      return it
+    })
+
+    localStorage.setItem('item', JSON.stringify(doneEdit))
     localStorage.setItem('textEdit', JSON.stringify(textEdit))
   }, [list, textEdit])
 
@@ -39,8 +43,6 @@ function App() {
     const donelist = list.map((it) => {
       if(it.id === item.id) {
         it.done = !it.done
-        console.log(item)
-        console.log(list, textEdit)
       }
       return it
     })
@@ -50,6 +52,7 @@ function App() {
   function deleteList(item) {
     const filterList = list.filter((it) => { return it.id !== item.id })
     setList(filterList)
+
     const filterListText = textEdit.filter((it) => it.id !== item.id)
     setTextEdit(filterListText)
   }
@@ -77,7 +80,6 @@ function App() {
 
   function handleEdit(item) {
     const editTextList = textEdit.map((it) => {
-      console.log(it, item)
       if(it.id === item.id) {
         item.text = it.text
         item.edit = false;
