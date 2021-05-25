@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 
 import Header from './components/Header'
 import List from './components/List'
 
 function App() {
-  const [ text, setText ] = useState('')
+  const [ text, setText ] = useState('') 
   const [ list, setList ] = useState([])
 
   const [textEdit, setTextEdit] = useState([])
@@ -13,6 +13,19 @@ function App() {
   function updateStateText(text) {
     setText(text)
   }
+
+  useEffect(() => {
+    const storageList = JSON.parse(localStorage.getItem('item'))
+    setList(storageList)
+
+    const storageText = JSON.parse(localStorage.getItem('textEdit'))
+    setTextEdit(storageText)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('item', JSON.stringify(list))
+    localStorage.setItem('textEdit', JSON.stringify(textEdit))
+  }, [list, textEdit])
 
   function updateStateList(item) {
     setList([...list, item])
@@ -37,6 +50,8 @@ function App() {
   function deleteList(item) {
     const filterList = list.filter((it) => { return it.id !== item.id })
     setList(filterList)
+    const filterListText = textEdit.filter((it) => it.id !== item.id)
+    setTextEdit(filterListText)
   }
 
   function editList(item) {

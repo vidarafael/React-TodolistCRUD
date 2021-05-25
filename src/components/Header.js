@@ -14,8 +14,8 @@ function Header(props) {
   }
 
   return (
-    <div>
-      <header>
+    <div className="">
+      <header className>
         <h1>Todo List React</h1>
         <input type="text" onChange={handleChange} value={props.text}/>
         <button onClick={click}>Adicionar</button>
