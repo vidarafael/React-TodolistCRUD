@@ -23,6 +23,10 @@ header h1 {
   color: white;
 }
 
+.header-ativo {
+  color: rgb(47, 241, 80);
+}
+
 header input {
   height: 30px;
   width: 50%;
