@@ -1,12 +1,16 @@
 import React, {useState} from 'react'
-import Item from '../Item'
+import {addList} from '../actions/listActions'
+import { useDispatch } from 'react-redux'
 
 function Header(props) {
   const [classHeader, setClassHeader] = useState(false)
+  const [text, setText] = useState("")
+
+  const dispatch = useDispatch()
 
   function handleChange(e) {
-    const text = e.target.value
-    props.updateStateText(text)
+    const textInput = e.target.value
+    setText(textInput)
   }
 
   function click(e) {
@@ -18,8 +22,8 @@ function Header(props) {
     }
     ,300)
 
-    const item = new Item(props.text)
-    props.updateStateList(item)
+    dispatch(addList(text))
+    setText("")
   }
 
   return (
@@ -27,7 +31,7 @@ function Header(props) {
       <header>
         <h1 className={classHeader ? 'header-ativo' : ''}>Todo List React</h1>
         <form action="">
-          <input type="text" onChange={handleChange} value={props.text}/>
+          <input type="text" onChange={handleChange} value={text}/>
           <button onClick={click}>Adicionar</button>
         </form>
       </header>

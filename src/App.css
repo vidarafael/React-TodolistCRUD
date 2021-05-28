@@ -75,6 +75,7 @@ li {
   margin: 50px auto;
   padding-top: 5px;
   word-break: break-all;
+  transition: 0.5s;
 }
 
 .item-text {
@@ -97,15 +98,14 @@ li button {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
 }
 
 li button:hover {
-  transition: 0.3s;
   background-color: rgb(83, 80, 80);
 }
 
 .done {
-  transition: 0.5s;
   color: rgb(47, 241, 80);
   box-shadow: 0px 5px 10px rgb(47, 241, 80);
 }
