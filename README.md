@@ -7,6 +7,7 @@
 ![image](https://user-images.githubusercontent.com/73259242/119581890-e08e4c00-bd99-11eb-92b3-5c70b4b36304.png)
 
 # Vídeo
+![React-todoList-2021](https://user-images.githubusercontent.com/73259242/120399874-3cfde800-c313-11eb-9fe6-e9215caff4fc.gif)
 
 # Tecnologias utilizadas
 
